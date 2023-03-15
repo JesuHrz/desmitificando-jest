@@ -1,0 +1,20 @@
+{
+  "name": "desmitificando-jest",
+  "version": "1.0.0",
+  "description": "Desmitificando jest desde 0",
+  "main": "index.js",
+  "scripts": {
+    "test:without-library": "node ./src/without-library.js",
+    "test:with-custom-library": "node -r ./src/internal/setup.js ./src/with-custom-library.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JesuHrz/desmitificando-jest.git"
+  },
+  "author": "Jesus Hernandez <jesusbeckan@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/JesuHrz/desmitificando-jest/issues"
+  },
+  "homepage": "https://github.com/JesuHrz/desmitificando-jest#readme"
+}
