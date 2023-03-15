@@ -3,8 +3,8 @@ const DOUBLE_SPACES = '\u2002\u2002'
 const errorMessage = (value, current) => `${value} is not equal to ${current}`
 
 class AssertionError extends Error {
-  constructor(value, expect) {
-    const message = `Expected ${expect} but recieved ${value}`
+  constructor(expect, value) {
+    const message = `Expected ${expect} but received ${value}`
     super(message)
     this.name = 'AssertionError'
   }
@@ -76,7 +76,7 @@ const expect = (value) => {
     },
     toHaveBeenCalledTimes(expected) {
       if (typeof value !== 'function' || value.mock.calls !== expected) {
-        throw new AssertionError(expected, value)
+        throw new AssertionError(expected, value.mock.calls)
       }
     },
   }
