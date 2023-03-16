@@ -1,3 +1,5 @@
+const path = require('path')
+
 const SINGLE_SPACES = '\u2002'
 const DOUBLE_SPACES = '\u2002\u2002'
 const errorMessage = (value, current) => `${value} is not equal to ${current}`
@@ -82,6 +84,21 @@ const expect = (value) => {
   }
 }
 
+const mock = (_path) => {
+  const modulePath = path.resolve('src', _path)
+  const mocksPath = path.resolve(modulePath, '..', '__mocks__', _path)
+  const mockedModule = require(mocksPath)
+
+  require.cache[modulePath] = {
+    id: modulePath,
+    filename: modulePath,
+    loaded: true,
+    exports: {
+      ...mockedModule
+    }
+  }
+}
+
 global.describe = describe
 global.afterAll = afterAll
 global.afterEach = afterEach
@@ -89,3 +106,5 @@ global.test = it
 global.it = it
 global.mockFn = mockFn
 global.expect = expect
+global.mock = mock
+

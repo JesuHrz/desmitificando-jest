@@ -25,8 +25,8 @@ describe('Math Module', () => {
     expect(sum(5, 7)).toBe(11)
   })
 
-  it('Should sum function be call once time', () => {
-    const mockedSum = mockFn(sum)
+  it('Should sum function be call once', () => {
+    const mockedSum = mockFn((a, b) => a + b)
 
     const result = mockedSum(3, 7)
     expect(result).toBe(10)
